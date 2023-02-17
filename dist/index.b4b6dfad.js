@@ -142,9 +142,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"byenu":[function(require,module,exports) {
-var Refresh = require("react-refresh/runtime");
-var ErrorOverlay = require("react-error-overlay");
+})({"1xC6H":[function(require,module,exports) {
+var Refresh = require("df3bc54882ab573");
+var ErrorOverlay = require("9f1754cb9a5fd481");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -163,11 +163,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"react-refresh/runtime":"3H7ms","react-error-overlay":"lfX9W"}],"3H7ms":[function(require,module,exports) {
+},{"df3bc54882ab573":"786KC","9f1754cb9a5fd481":"1dldy"}],"786KC":[function(require,module,exports) {
 "use strict";
-module.exports = require("./cjs/react-refresh-runtime.development.js");
+module.exports = require("c519e2091d92c70b");
 
-},{"./cjs/react-refresh-runtime.development.js":"RYqlp"}],"RYqlp":[function(require,module,exports) {
+},{"c519e2091d92c70b":"hdge7"}],"hdge7":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -627,8 +627,8 @@ module.exports = require("./cjs/react-refresh-runtime.development.js");
     exports.setSignature = setSignature;
 })();
 
-},{}],"lfX9W":[function(require,module,exports) {
-var process = require("process");
+},{}],"1dldy":[function(require,module,exports) {
+var process = require("95de2f40e854e5b6");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -1043,7 +1043,7 @@ var process = require("process");
                 }
                 try {
                     u({}, "");
-                } catch (e1) {
+                } catch (e) {
                     u = function(e, t, r) {
                         return e[t] = r;
                     };
@@ -1092,10 +1092,10 @@ var process = require("process");
                             type: "normal",
                             arg: e.call(t, r)
                         };
-                    } catch (e1) {
+                    } catch (e) {
                         return {
                             type: "throw",
-                            arg: e1
+                            arg: e
                         };
                     }
                 }
@@ -1314,7 +1314,7 @@ var process = require("process");
             }(e.exports);
             try {
                 regeneratorRuntime = n;
-            } catch (e1) {
+            } catch (e) {
                 Function("r", "regeneratorRuntime = r")(n);
             }
         },
@@ -1835,9 +1835,9 @@ var process = require("process");
                         try {
                             var e = arguments[0];
                             "string" == typeof e && d.length > 0 && t(e, d[d.length - 1]);
-                        } catch (e1) {
+                        } catch (e) {
                             setTimeout(function() {
-                                throw e1;
+                                throw e;
                             });
                         }
                         return r.apply(this, arguments);
@@ -1968,8 +1968,8 @@ var process = require("process");
             function N(e, t, r, n, o, a, i) {
                 try {
                     var l = e[a](i), u = l.value;
-                } catch (e1) {
-                    return void r(e1);
+                } catch (e) {
+                    return void r(e);
                 }
                 l.done ? t(u) : Promise.resolve(u).then(n, o);
             }
@@ -2233,7 +2233,7 @@ var process = require("process");
                     var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : f;
                     if (!c) try {
                         s = Error.stackTraceLimit, Error.stackTraceLimit = e, c = !0;
-                    } catch (e1) {}
+                    } catch (e) {}
                 }(), p(), g("error", function(e, n) {
                     var o = function(e, t) {
                         for(var r, n, o = function(e) {
@@ -2358,17 +2358,17 @@ var process = require("process");
     ]);
 });
 
-},{"process":"3fsHr"}],"3fsHr":[function(require,module,exports) {
+},{"95de2f40e854e5b6":"jhUEF"}],"jhUEF":[function(require,module,exports) {
 "use strict";
 
-},{}],"ceL4K":[function(require,module,exports) {
-"use strict";
+},{}],"7a1Sg":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "022c1b16b4b6dfad";
+"use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
@@ -2377,7 +2377,7 @@ import type {
 interface ParcelRequire {
   (string): mixed;
   cache: {|[string]: ParcelModule|};
-  hotData: mixed;
+  hotData: {|[string]: mixed|};
   Module: any;
   parent: ?ParcelRequire;
   isParcelRequire: true;
@@ -2419,7 +2419,7 @@ var OldModule = module.bundle.Module;
 function Module(moduleName) {
     OldModule.call(this, moduleName);
     this.hot = {
-        data: module.bundle.hotData,
+        data: module.bundle.hotData[moduleName],
         _acceptCallbacks: [],
         _disposeCallbacks: [],
         accept: function(fn) {
@@ -2429,10 +2429,11 @@ function Module(moduleName) {
             this._disposeCallbacks.push(fn);
         }
     };
-    module.bundle.hotData = undefined;
+    module.bundle.hotData[moduleName] = undefined;
 }
 module.bundle.Module = Module;
-var checkedAssets, acceptedAssets, assetsToAccept /*: Array<[ParcelRequire, string]> */ ;
+module.bundle.hotData = {};
+var checkedAssets, assetsToDispose, assetsToAccept /*: Array<[ParcelRequire, string]> */ ;
 function getHostname() {
     return HMR_HOST || (location.protocol.indexOf("http") === 0 ? location.hostname : "localhost");
 }
@@ -2455,8 +2456,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     } // $FlowFixMe
     ws.onmessage = async function(event) {
         checkedAssets = {} /*: {|[string]: boolean|} */ ;
-        acceptedAssets = {} /*: {|[string]: boolean|} */ ;
         assetsToAccept = [];
+        assetsToDispose = [];
         var data = JSON.parse(event.data);
         if (data.type === "update") {
             // Remove error overlay if there is one
@@ -2468,10 +2469,22 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
             if (handled) {
                 console.clear(); // Dispatch custom event so other runtimes (e.g React Refresh) are aware.
                 if (typeof window !== "undefined" && typeof CustomEvent !== "undefined") window.dispatchEvent(new CustomEvent("parcelhmraccept"));
-                await hmrApplyUpdates(assets);
-                for(var i = 0; i < assetsToAccept.length; i++){
-                    var id = assetsToAccept[i][1];
-                    if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
+                await hmrApplyUpdates(assets); // Dispose all old assets.
+                let processedAssets = {} /*: {|[string]: boolean|} */ ;
+                for(let i = 0; i < assetsToDispose.length; i++){
+                    let id = assetsToDispose[i][1];
+                    if (!processedAssets[id]) {
+                        hmrDispose(assetsToDispose[i][0], id);
+                        processedAssets[id] = true;
+                    }
+                } // Run accept callbacks. This will also re-execute other disposed assets in topological order.
+                processedAssets = {};
+                for(let i = 0; i < assetsToAccept.length; i++){
+                    let id = assetsToAccept[i][1];
+                    if (!processedAssets[id]) {
+                        hmrAccept(assetsToAccept[i][0], id);
+                        processedAssets[id] = true;
+                    }
                 }
             } else fullReload();
         }
@@ -2724,30 +2737,42 @@ function hmrAcceptCheckOne(bundle, id, depsByBundle) {
     if (checkedAssets[id]) return true;
     checkedAssets[id] = true;
     var cached = bundle.cache[id];
-    assetsToAccept.push([
+    assetsToDispose.push([
         bundle,
         id
     ]);
-    if (!cached || cached.hot && cached.hot._acceptCallbacks.length) return true;
+    if (!cached || cached.hot && cached.hot._acceptCallbacks.length) {
+        assetsToAccept.push([
+            bundle,
+            id
+        ]);
+        return true;
+    }
 }
-function hmrAcceptRun(bundle, id) {
+function hmrDispose(bundle, id) {
     var cached = bundle.cache[id];
-    bundle.hotData = {};
-    if (cached && cached.hot) cached.hot.data = bundle.hotData;
+    bundle.hotData[id] = {};
+    if (cached && cached.hot) cached.hot.data = bundle.hotData[id];
     if (cached && cached.hot && cached.hot._disposeCallbacks.length) cached.hot._disposeCallbacks.forEach(function(cb) {
-        cb(bundle.hotData);
+        cb(bundle.hotData[id]);
     });
     delete bundle.cache[id];
-    bundle(id);
-    cached = bundle.cache[id];
+}
+function hmrAccept(bundle, id) {
+    // Execute the module.
+    bundle(id); // Run the accept callbacks in the new version of the module.
+    var cached = bundle.cache[id];
     if (cached && cached.hot && cached.hot._acceptCallbacks.length) cached.hot._acceptCallbacks.forEach(function(cb) {
         var assetsToAlsoAccept = cb(function() {
             return getParents(module.bundle.root, id);
         });
-        if (assetsToAlsoAccept && assetsToAccept.length) // $FlowFixMe[method-unbinding]
-        assetsToAccept.push.apply(assetsToAccept, assetsToAlsoAccept);
+        if (assetsToAlsoAccept && assetsToAccept.length) {
+            assetsToAlsoAccept.forEach(function(a) {
+                hmrDispose(a[0], a[1]);
+            }); // $FlowFixMe[method-unbinding]
+            assetsToAccept.push.apply(assetsToAccept, assetsToAlsoAccept);
+        }
     });
-    acceptedAssets[id] = true;
 }
 
 },{}],"d8Dch":[function(require,module,exports) {
@@ -2763,42 +2788,44 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
+var _mainView = require("./components/main-view/main-view");
+var _greeting = require("./components/greeting/greeting");
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
-class MyFlixApplication extends (0, _reactDefault.default).Component {
+class DeppFlixApplication extends (0, _reactDefault.default).Component {
     render() {
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "my-flix",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: "Good morning"
-            }, void 0, false, {
-                fileName: "src/index.jsx",
-                lineNumber: 12,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "src/index.jsx",
-            lineNumber: 11,
-            columnNumber: 7
-        }, this);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _greeting.Greeting), {}, void 0, false, {
+                    fileName: "src/index.jsx",
+                    lineNumber: 14,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
+                    fileName: "src/index.jsx",
+                    lineNumber: 15,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true);
     }
 }
 // Finds the root of your app
 const container = document.getElementsByClassName("app-container")[0];
 // Tells React to render your app in the root DOM element
-(0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _reactDefault.default).createElement(MyFlixApplication), container);
+(0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _reactDefault.default).createElement(DeppFlixApplication), container);
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"3AIvs","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"laPgc"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/main-view/main-view":"4gflv","./components/greeting/greeting":"8RM7s"}],"iTorj":[function(require,module,exports) {
 "use strict";
-module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
+module.exports = require("7ed3bb42d64252b8");
 
-},{"./cjs/react-jsx-dev-runtime.development.js":"48uCM"}],"48uCM":[function(require,module,exports) {
+},{"7ed3bb42d64252b8":"48uCM"}],"48uCM":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2810,7 +2837,7 @@ module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
  */ "use strict";
 (function() {
     "use strict";
-    var React = require("react");
+    var React = require("dd8f12fcc8caadc0");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -2873,7 +2900,8 @@ module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
          // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
         if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden || type === REACT_OFFSCREEN_TYPE || enableScopeAPI || enableCacheElement || enableTransitionTracing) return true;
         if (typeof type === "object" && type !== null) {
-            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // types supported by any Flight configuration anywhere since
+            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+            // types supported by any Flight configuration anywhere since
             // we don't know which Flight build this will end up being used
             // with.
             type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) return true;
@@ -3067,16 +3095,16 @@ module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
                 } else {
                     try {
                         Fake.call();
-                    } catch (x1) {
-                        control = x1;
+                    } catch (x) {
+                        control = x;
                     }
                     fn.call(Fake.prototype);
                 }
             } else {
                 try {
                     throw Error();
-                } catch (x2) {
-                    control = x2;
+                } catch (x) {
+                    control = x;
                 }
                 fn();
             }
@@ -3547,7 +3575,8 @@ module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
         if (type === null || type === undefined || typeof type === "string") return;
         var propTypes;
         if (typeof type === "function") propTypes = type.propTypes;
-        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Inner props are checked in the reconciler.
+        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+        // Inner props are checked in the reconciler.
         type.$$typeof === REACT_MEMO_TYPE)) propTypes = type.propTypes;
         else return;
         if (propTypes) {
@@ -3627,11 +3656,11 @@ module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"react":"21dqq"}],"21dqq":[function(require,module,exports) {
+},{"dd8f12fcc8caadc0":"21dqq"}],"21dqq":[function(require,module,exports) {
 "use strict";
-module.exports = require("./cjs/react.development.js");
+module.exports = require("fb8508117d5078b1");
 
-},{"./cjs/react.development.js":"6YvXz"}],"6YvXz":[function(require,module,exports) {
+},{"fb8508117d5078b1":"6YvXz"}],"6YvXz":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -4683,7 +4712,8 @@ module.exports = require("./cjs/react.development.js");
          // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
         if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden || type === REACT_OFFSCREEN_TYPE || enableScopeAPI || enableCacheElement || enableTransitionTracing) return true;
         if (typeof type === "object" && type !== null) {
-            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // types supported by any Flight configuration anywhere since
+            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+            // types supported by any Flight configuration anywhere since
             // we don't know which Flight build this will end up being used
             // with.
             type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) return true;
@@ -4923,16 +4953,16 @@ module.exports = require("./cjs/react.development.js");
                 } else {
                     try {
                         Fake.call();
-                    } catch (x1) {
-                        control = x1;
+                    } catch (x) {
+                        control = x;
                     }
                     fn.call(Fake.prototype);
                 }
             } else {
                 try {
                     throw Error();
-                } catch (x2) {
-                    control = x2;
+                } catch (x) {
+                    control = x;
                 }
                 fn();
             }
@@ -5172,7 +5202,8 @@ module.exports = require("./cjs/react.development.js");
         if (type === null || type === undefined || typeof type === "string") return;
         var propTypes;
         if (typeof type === "function") propTypes = type.propTypes;
-        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Inner props are checked in the reconciler.
+        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+        // Inner props are checked in the reconciler.
         type.$$typeof === REACT_MEMO_TYPE)) propTypes = type.propTypes;
         else return;
         if (propTypes) {
@@ -5333,9 +5364,9 @@ module.exports = require("./cjs/react.development.js");
                     flushActQueue(queue);
                 }
             }
-        } catch (error1) {
+        } catch (error) {
             popActScope(prevActScopeDepth);
-            throw error1;
+            throw error;
         } finally{
             ReactCurrentActQueue.isBatchingLegacy = prevIsBatchingLegacy;
         }
@@ -5509,9 +5540,9 @@ function checkDCE() {
     // a false positive.
     throw new Error("^_^");
 }
-module.exports = require("./cjs/react-dom.development.js");
+module.exports = require("3843142d33a0a4a4");
 
-},{"./cjs/react-dom.development.js":"3iA9v"}],"3iA9v":[function(require,module,exports) {
+},{"3843142d33a0a4a4":"3iA9v"}],"3iA9v":[function(require,module,exports) {
 /**
  * @license React
  * react-dom.development.js
@@ -5524,8 +5555,8 @@ module.exports = require("./cjs/react-dom.development.js");
 (function() {
     "use strict";
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("react");
-    var Scheduler = require("scheduler");
+    var React = require("e8d0f7f33559ca1e");
+    var Scheduler = require("91ce4558dbe58333");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -6341,16 +6372,16 @@ module.exports = require("./cjs/react-dom.development.js");
                 } else {
                     try {
                         Fake.call();
-                    } catch (x1) {
-                        control = x1;
+                    } catch (x) {
+                        control = x;
                     }
                     fn.call(Fake.prototype);
                 }
             } else {
                 try {
                     throw Error();
-                } catch (x2) {
-                    control = x2;
+                } catch (x) {
+                    control = x;
                 }
                 fn();
             }
@@ -6826,7 +6857,8 @@ module.exports = require("./cjs/react-dom.development.js");
         var type = props.type;
         if (value != null) {
             if (type === "number") {
-                if (value === 0 && node.value === "" || // eslint-disable-next-line
+                if (value === 0 && node.value === "" || // We explicitly want to coerce to number here if possible.
+                // eslint-disable-next-line
                 node.value != value) node.value = toString(value);
             } else if (node.value !== toString(value)) node.value = toString(value);
         } else if (type === "submit" || type === "reset") {
@@ -9529,12 +9561,14 @@ module.exports = require("./cjs/react-dom.development.js");
          // If we're already in the middle of a render, switching lanes will interrupt
         // it and we'll lose our progress. We should only do this if the new lanes are
         // higher priority.
-        if (wipLanes !== NoLanes && wipLanes !== nextLanes && // bother waiting until the root is complete.
+        if (wipLanes !== NoLanes && wipLanes !== nextLanes && // If we already suspended with a delay, then interrupting is fine. Don't
+        // bother waiting until the root is complete.
         (wipLanes & suspendedLanes) === NoLanes) {
             var nextLane = getHighestPriorityLane(nextLanes);
             var wipLane = getHighestPriorityLane(wipLanes);
             if (// one. This works because the bits decrease in priority as you go left.
-            nextLane >= wipLane || // only difference between default updates and transition updates is that
+            nextLane >= wipLane || // Default priority updates should not interrupt transition updates. The
+            // only difference between default updates and transition updates is that
             // default updates do not support refresh transitions.
             nextLane === DefaultLane && (wipLane & TransitionLanes) !== NoLanes) // Keep working on the existing in-progress tree. Do not interrupt.
             return wipLanes;
@@ -9849,7 +9883,8 @@ module.exports = require("./cjs/react-dom.development.js");
         while(lanes){
             var index = pickArbitraryLaneIndex(lanes);
             var lane = 1 << index;
-            if (lane & entangledLanes | entanglements[index] & entangledLanes) entanglements[index] |= entangledLanes;
+            if (lane & entangledLanes | // Is this lane transitively entangled with the newly entangled lanes?
+            entanglements[index] & entangledLanes) entanglements[index] |= entangledLanes;
             lanes &= ~lane;
         }
     }
@@ -11019,7 +11054,8 @@ module.exports = require("./cjs/react-dom.development.js");
  * This is required because Firefox fires `keypress` events for key commands
  * (cut, copy, select-all, etc.) even though no character is inserted.
  */ function isKeypressCommand(nativeEvent) {
-        return (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) && !(nativeEvent.ctrlKey && nativeEvent.altKey);
+        return (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) && // ctrlKey && altKey is equivalent to AltGr, and is not a command.
+        !(nativeEvent.ctrlKey && nativeEvent.altKey);
     }
     /**
  * Translate native top level events into event types.
@@ -12240,7 +12276,8 @@ module.exports = require("./cjs/react-dom.development.js");
         // In the past, React has always bubbled them, but this can be surprising.
         // We're going to try aligning closer to the browser behavior by not bubbling
         // them in React either. We'll start by not bubbling onScroll, and then expand.
-        var accumulateTargetOnly = !inCapturePhase && // nonDelegatedEvents list in DOMPluginEventSystem.
+        var accumulateTargetOnly = !inCapturePhase && // TODO: ideally, we'd eventually add all events from
+        // nonDelegatedEvents list in DOMPluginEventSystem.
         // Then we can remove this special list.
         // This is a breaking change that can wait until React 18.
         domEventName === "scroll";
@@ -13179,12 +13216,14 @@ module.exports = require("./cjs/react-dom.development.js");
                     if (typeof nextProp !== "function") warnForInvalidEventListener(propKey, nextProp);
                     if (propKey === "onScroll") listenToNonDelegatedEvent("scroll", domElement);
                 }
-            } else if (shouldWarnDev && true && typeof isCustomComponentTag === "boolean") {
+            } else if (shouldWarnDev && true && // Convince Flow we've calculated it (it's DEV-only in this method.)
+            typeof isCustomComponentTag === "boolean") {
                 // Validate that the properties correspond to their expected values.
                 var serverValue = void 0;
                 var propertyInfo = isCustomComponentTag && enableCustomElementPropertySupport ? null : getPropertyInfo(propKey);
                 if (rawProps[SUPPRESS_HYDRATION_WARNING] === true) ;
-                else if (propKey === SUPPRESS_CONTENT_EDITABLE_WARNING || propKey === SUPPRESS_HYDRATION_WARNING || // TODO: Only ignore them on controlled tags.
+                else if (propKey === SUPPRESS_CONTENT_EDITABLE_WARNING || propKey === SUPPRESS_HYDRATION_WARNING || // Controlled attributes are not validated
+                // TODO: Only ignore them on controlled tags.
                 propKey === "value" || propKey === "checked" || propKey === "selected") ;
                 else if (propKey === DANGEROUSLY_SET_INNER_HTML) {
                     var serverHTML = domElement.innerHTML;
@@ -14999,7 +15038,8 @@ module.exports = require("./cjs/react-dom.development.js");
     ReactStrictModeWarnings.recordUnsafeLifecycleWarnings = function(fiber, instance) {
         // Dedupe strategy: Warn once per component.
         if (didWarnAboutUnsafeLifecycles.has(fiber.type)) return;
-        if (typeof instance.componentWillMount === "function" && instance.componentWillMount.__suppressDeprecationWarning !== true) pendingComponentWillMountWarnings.push(fiber);
+        if (typeof instance.componentWillMount === "function" && // Don't warn about react-lifecycles-compat polyfilled components.
+        instance.componentWillMount.__suppressDeprecationWarning !== true) pendingComponentWillMountWarnings.push(fiber);
         if (fiber.mode & StrictLegacyMode && typeof instance.UNSAFE_componentWillMount === "function") pendingUNSAFE_ComponentWillMountWarnings.push(fiber);
         if (typeof instance.componentWillReceiveProps === "function" && instance.componentWillReceiveProps.__suppressDeprecationWarning !== true) pendingComponentWillReceivePropsWarnings.push(fiber);
         if (fiber.mode & StrictLegacyMode && typeof instance.UNSAFE_componentWillReceiveProps === "function") pendingUNSAFE_ComponentWillReceivePropsWarnings.push(fiber);
@@ -15704,7 +15744,8 @@ module.exports = require("./cjs/react-dom.development.js");
                     } // Process this update.
                     newState = getStateFromUpdate(workInProgress, queue, update, newState, props, instance);
                     var callback = update.callback;
-                    if (callback !== null && // callback again.
+                    if (callback !== null && // If the update was already committed, we should not queue its
+                    // callback again.
                     update.lane !== NoLane) {
                         workInProgress.flags |= Callback;
                         var effects = queue.effects;
@@ -16223,7 +16264,8 @@ module.exports = require("./cjs/react-dom.development.js");
             applyDerivedStateFromProps(workInProgress, ctor, getDerivedStateFromProps, newProps);
             newState = workInProgress.memoizedState;
         }
-        var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext) || // both before and after `shouldComponentUpdate` has been called. Not ideal,
+        var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress, ctor, oldProps, newProps, oldState, newState, nextContext) || // TODO: In some cases, we'll end up checking if context has changed twice,
+        // both before and after `shouldComponentUpdate` has been called. Not ideal,
         // but I'm loath to refactor this function. This only happens for memoized
         // components so it's not that common.
         enableLazyContextPropagation;
@@ -16285,7 +16327,8 @@ module.exports = require("./cjs/react-dom.development.js");
         if (mixedRef !== null && typeof mixedRef !== "function" && typeof mixedRef !== "object") {
             // TODO: Clean this up once we turn on the string ref warning for
             // everyone, because the strict mode case will no longer be relevant
-            if ((returnFiber.mode & StrictLegacyMode || warnAboutStringRefs) && // because these cannot be automatically converted to an arrow function
+            if ((returnFiber.mode & StrictLegacyMode || warnAboutStringRefs) && // We warn in ReactElement.js if owner and self are equal for string refs
+            // because these cannot be automatically converted to an arrow function
             // using a codemod. Therefore, we don't have to warn about string refs again.
             !(element._owner && element._self && element._owner.stateNode !== element._self)) {
                 var componentName = getComponentNameFromFiber(returnFiber) || "Component";
@@ -16433,7 +16476,8 @@ module.exports = require("./cjs/react-dom.development.js");
             var elementType = element.type;
             if (elementType === REACT_FRAGMENT_TYPE) return updateFragment(returnFiber, current, element.props.children, lanes, element.key);
             if (current !== null) {
-                if (current.elementType === elementType || isCompatibleFamilyForHotReloading(current, element) || // We need to do this after the Hot Reloading check above,
+                if (current.elementType === elementType || isCompatibleFamilyForHotReloading(current, element) || // Lazy types should reconcile their resolved type.
+                // We need to do this after the Hot Reloading check above,
                 // because hot reloading has different semantics than prod because
                 // it doesn't resuspend. So we can't let the call below suspend.
                 typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === current.type) {
@@ -16707,7 +16751,8 @@ module.exports = require("./cjs/react-dom.development.js");
             if (typeof iteratorFn !== "function") throw new Error("An object is not an iterable. This error is likely caused by a bug in React. Please file an issue.");
             // We don't support rendering Generators because it's a mutation.
             // See https://github.com/facebook/react/issues/12995
-            if (typeof Symbol === "function" && newChildrenIterable[Symbol.toStringTag] === "Generator") {
+            if (typeof Symbol === "function" && // $FlowFixMe Flow doesn't know about toStringTag
+            newChildrenIterable[Symbol.toStringTag] === "Generator") {
                 if (!didWarnAboutGenerators) error("Using Generators as children is unsupported and will likely yield unexpected results because enumerating a generator mutates it. You may convert it to an array with `Array.from()` or the `[...spread]` operator before rendering. Keep in mind you might need to polyfill these features for older browsers.");
                 didWarnAboutGenerators = true;
             } // Warn about using Maps as children
@@ -16853,7 +16898,8 @@ module.exports = require("./cjs/react-dom.development.js");
                             existing._debugOwner = element._owner;
                             return existing;
                         }
-                    } else if (child.elementType === elementType || isCompatibleFamilyForHotReloading(child, element) || // We need to do this after the Hot Reloading check above,
+                    } else if (child.elementType === elementType || isCompatibleFamilyForHotReloading(child, element) || // Lazy types should reconcile their resolved type.
+                    // We need to do this after the Hot Reloading check above,
                     // because hot reloading has different semantics than prod because
                     // it doesn't resuspend. So we can't let the call below suspend.
                     typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === child.type) {
@@ -17070,7 +17116,8 @@ module.exports = require("./cjs/react-dom.development.js");
                     var dehydrated = state.dehydrated;
                     if (dehydrated === null || isSuspenseInstancePending(dehydrated) || isSuspenseInstanceFallback(dehydrated)) return node;
                 }
-            } else if (node.tag === SuspenseListComponent && // keep track of whether it suspended or not.
+            } else if (node.tag === SuspenseListComponent && // revealOrder undefined can't be trusted because it don't
+            // keep track of whether it suspended or not.
             node.memoizedProps.revealOrder !== undefined) {
                 var didSuspend = (node.flags & DidCapture) !== NoFlags;
                 if (didSuspend) return node;
@@ -17263,7 +17310,8 @@ module.exports = require("./cjs/react-dom.development.js");
         // render. If this fires, it suggests that we incorrectly reset the static
         // flags in some other part of the codebase. This has happened before, for
         // example, in the SuspenseList implementation.
-        if (current !== null && (current.flags & StaticMask) !== (workInProgress.flags & StaticMask) && // and creates false positives. To make this work in legacy mode, we'd
+        if (current !== null && (current.flags & StaticMask) !== (workInProgress.flags & StaticMask) && // Disable this warning in legacy mode, because legacy Suspense is weird
+        // and creates false positives. To make this work in legacy mode, we'd
         // need to mark fibers that commit in an incomplete state, somehow. For
         // now I'll disable the warning that most of the bugs that would trigger
         // it are either exclusive to concurrent mode or exist in both.
@@ -17634,7 +17682,8 @@ module.exports = require("./cjs/react-dom.development.js");
         // commit phase if there was an interleaved mutation. In concurrent mode
         // this can happen all the time, but even in synchronous mode, an earlier
         // effect may have mutated the store.
-        if (inst.getSnapshot !== getSnapshot || snapshotChanged || // checking whether we scheduled a subscription effect above.
+        if (inst.getSnapshot !== getSnapshot || snapshotChanged || // Check if the susbcribe function changed. We can save some memory by
+        // checking whether we scheduled a subscription effect above.
         workInProgressHook !== null && workInProgressHook.memoizedState.tag & HasEffect) {
             fiber.flags |= Passive;
             pushEffect(HasEffect | Passive$1, updateStoreInstance.bind(null, fiber, inst, nextSnapshot, getSnapshot), undefined, null); // Unless we're rendering a blocking lane, schedule a consistency check.
@@ -18103,7 +18152,7 @@ module.exports = require("./cjs/react-dom.development.js");
                             enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane);
                             return;
                         }
-                    } catch (error1) {} finally{
+                    } catch (error) {} finally{
                         ReactCurrentDispatcher$1.current = prevDispatcher;
                     }
                 }
@@ -19567,7 +19616,8 @@ module.exports = require("./cjs/react-dom.development.js");
     function updateMemoComponent(current, workInProgress, Component, nextProps, renderLanes) {
         if (current === null) {
             var type = Component.type;
-            if (isSimpleFunctionComponent(type) && Component.compare === null && Component.defaultProps === undefined) {
+            if (isSimpleFunctionComponent(type) && Component.compare === null && // SimpleMemoComponent codepath doesn't resolve outer props either.
+            Component.defaultProps === undefined) {
                 var resolvedType = type;
                 resolvedType = resolveFunctionForHotReloading(type);
                 // and with only the default shallow comparison, we upgrade it
@@ -20379,7 +20429,8 @@ module.exports = require("./cjs/react-dom.development.js");
         };
         var primaryChildFragment;
         if (// completed, even though it's in an inconsistent state.
-        (mode & ConcurrentMode) === NoMode && // already cloned. In legacy mode, the only case where this isn't true is
+        (mode & ConcurrentMode) === NoMode && // Make sure we're on the second pass, i.e. the primary child fragment was
+        // already cloned. In legacy mode, the only case where this isn't true is
         // when DevTools forces us to display a fallback; we skip the first render
         // pass entirely and go straight to rendering the fallback. (In Concurrent
         // Mode, SuspenseList can also trigger this scenario, but this is a legacy-
@@ -21074,7 +21125,8 @@ module.exports = require("./cjs/react-dom.development.js");
                 // Neither props nor legacy context changes. Check if there's a pending
                 // update or context change.
                 var hasScheduledUpdateOrContext = checkScheduledUpdateOrContext(current, renderLanes);
-                if (!hasScheduledUpdateOrContext && // may not be work scheduled on `current`, so we check for this flag.
+                if (!hasScheduledUpdateOrContext && // If this is the second pass of an error or suspense boundary, there
+                // may not be work scheduled on `current`, so we check for this flag.
                 (workInProgress.flags & DidCapture) === NoFlags) {
                     // No pending updates or context. Bail out now.
                     didReceiveUpdate = false;
@@ -21466,7 +21518,8 @@ module.exports = require("./cjs/react-dom.development.js");
                     markUpdate(workInProgress);
                     else if (current !== null) {
                         var prevState = current.memoizedState;
-                        if (!prevState.isDehydrated || (workInProgress.flags & ForceClientRender) !== NoFlags) {
+                        if (!prevState.isDehydrated || // Check if we reverted to client rendering (e.g. due to an error)
+                        (workInProgress.flags & ForceClientRender) !== NoFlags) {
                             // Schedule an effect to clear this container at the start of the
                             // next commit. This handles the case of React rendering into a
                             // container with previous children. It's also safe to do for
@@ -21993,8 +22046,8 @@ module.exports = require("./cjs/react-dom.development.js");
                         recordLayoutEffectDuration(current);
                     }
                     else retVal = ref(null);
-                } catch (error1) {
-                    captureCommitPhaseError(current, nearestMountedAncestor, error1);
+                } catch (error) {
+                    captureCommitPhaseError(current, nearestMountedAncestor, error);
                 }
                 if (typeof retVal === "function") error("Unexpected return value from a callback ref in %s. A callback ref should not return a function.", getComponentNameFromFiber(current));
             } else ref.current = null;
@@ -22367,8 +22420,8 @@ module.exports = require("./cjs/react-dom.development.js");
                     var _instance3 = node.stateNode;
                     if (isHidden) hideTextInstance(_instance3);
                     else unhideTextInstance(_instance3, node.memoizedProps);
-                } catch (error1) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error1);
+                } catch (error) {
+                    captureCommitPhaseError(finishedWork, finishedWork.return, error);
                 }
             } else if ((node.tag === OffscreenComponent || node.tag === LegacyHiddenComponent) && node.memoizedState !== null && node !== finishedWork) ;
             else if (node.child !== null) {
@@ -22840,14 +22893,14 @@ module.exports = require("./cjs/react-dom.development.js");
                         try {
                             startLayoutEffectTimer();
                             commitHookEffectListUnmount(Layout | HasEffect, finishedWork, finishedWork.return);
-                        } catch (error1) {
-                            captureCommitPhaseError(finishedWork, finishedWork.return, error1);
+                        } catch (error) {
+                            captureCommitPhaseError(finishedWork, finishedWork.return, error);
                         }
                         recordLayoutEffectDuration(finishedWork);
                     } else try {
                         commitHookEffectListUnmount(Layout | HasEffect, finishedWork, finishedWork.return);
-                    } catch (error2) {
-                        captureCommitPhaseError(finishedWork, finishedWork.return, error2);
+                    } catch (error) {
+                        captureCommitPhaseError(finishedWork, finishedWork.return, error);
                     }
                 }
                 return;
@@ -22874,8 +22927,8 @@ module.exports = require("./cjs/react-dom.development.js");
                     var instance = finishedWork.stateNode;
                     try {
                         resetTextContent(instance);
-                    } catch (error3) {
-                        captureCommitPhaseError(finishedWork, finishedWork.return, error3);
+                    } catch (error) {
+                        captureCommitPhaseError(finishedWork, finishedWork.return, error);
                     }
                 }
                 if (flags & Update) {
@@ -22891,8 +22944,8 @@ module.exports = require("./cjs/react-dom.development.js");
                         finishedWork.updateQueue = null;
                         if (updatePayload !== null) try {
                             commitUpdate(_instance4, updatePayload, type, oldProps, newProps, finishedWork);
-                        } catch (error4) {
-                            captureCommitPhaseError(finishedWork, finishedWork.return, error4);
+                        } catch (error) {
+                            captureCommitPhaseError(finishedWork, finishedWork.return, error);
                         }
                     }
                 }
@@ -22909,8 +22962,8 @@ module.exports = require("./cjs/react-dom.development.js");
                     var oldText = current !== null ? current.memoizedProps : newText;
                     try {
                         commitTextUpdate(textInstance, oldText, newText);
-                    } catch (error5) {
-                        captureCommitPhaseError(finishedWork, finishedWork.return, error5);
+                    } catch (error) {
+                        captureCommitPhaseError(finishedWork, finishedWork.return, error);
                     }
                 }
                 return;
@@ -22922,8 +22975,8 @@ module.exports = require("./cjs/react-dom.development.js");
                         var prevRootState = current.memoizedState;
                         if (prevRootState.isDehydrated) try {
                             commitHydratedContainer(root.containerInfo);
-                        } catch (error6) {
-                            captureCommitPhaseError(finishedWork, finishedWork.return, error6);
+                        } catch (error) {
+                            captureCommitPhaseError(finishedWork, finishedWork.return, error);
                         }
                     }
                 }
@@ -22951,8 +23004,8 @@ module.exports = require("./cjs/react-dom.development.js");
                 if (flags & Update) {
                     try {
                         commitSuspenseCallback(finishedWork);
-                    } catch (error7) {
-                        captureCommitPhaseError(finishedWork, finishedWork.return, error7);
+                    } catch (error) {
+                        captureCommitPhaseError(finishedWork, finishedWork.return, error);
                     }
                     attachSuspenseRetryListeners(finishedWork);
                 }
@@ -23410,8 +23463,8 @@ module.exports = require("./cjs/react-dom.development.js");
                 var instance = fiber.stateNode;
                 try {
                     instance.componentDidMount();
-                } catch (error1) {
-                    captureCommitPhaseError(fiber, fiber.return, error1);
+                } catch (error) {
+                    captureCommitPhaseError(fiber, fiber.return, error);
                 }
                 break;
         }
@@ -23672,7 +23725,8 @@ module.exports = require("./cjs/react-dom.development.js");
                 markRootSuspended$1(root, workInProgressRootRenderLanes);
             }
             ensureRootIsScheduled(root, eventTime);
-            if (lane === SyncLane && executionContext === NoContext && (fiber.mode & ConcurrentMode) === NoMode && !ReactCurrentActQueue$1.isBatchingLegacy) {
+            if (lane === SyncLane && executionContext === NoContext && (fiber.mode & ConcurrentMode) === NoMode && // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.
+            !ReactCurrentActQueue$1.isBatchingLegacy) {
                 // Flush the synchronous work now, unless we're already working or inside
                 // a batch. This is intentionally inside scheduleUpdateOnFiber instead of
                 // scheduleCallbackForFiber to preserve the ability to schedule a callback
@@ -23722,7 +23776,8 @@ module.exports = require("./cjs/react-dom.development.js");
         } // We use the highest priority lane to represent the priority of the callback.
         var newCallbackPriority = getHighestPriorityLane(nextLanes); // Check if there's an existing task. We may be able to reuse it.
         var existingCallbackPriority = root.callbackPriority;
-        if (existingCallbackPriority === newCallbackPriority && // Scheduler task, rather than an `act` task, cancel it and re-scheduled
+        if (existingCallbackPriority === newCallbackPriority && // Special case related to `act`. If the currently scheduled task is a
+        // Scheduler task, rather than an `act` task, cancel it and re-scheduled
         // on the `act` queue.
         !(ReactCurrentActQueue$1.current !== null && existingCallbackNode !== fakeActCallbackNode)) {
             // If we're going to re-use an existing task, it needs to exist.
@@ -23934,7 +23989,8 @@ module.exports = require("./cjs/react-dom.development.js");
             case RootSuspended:
                 markRootSuspended$1(root, lanes); // We have an acceptable loading state. We need to figure out if we
                 // should immediately commit it or wait a bit.
-                if (includesOnlyRetries(lanes) && !shouldForceFlushFallbacksInDEV()) {
+                if (includesOnlyRetries(lanes) && // do not delay if we're inside an act() scope
+                !shouldForceFlushFallbacksInDEV()) {
                     // This render only included retries, no updates. Throttle committing
                     // retries so that we don't show too many loading states too quickly.
                     var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now(); // Don't bother with a very short suspense time.
@@ -24100,7 +24156,8 @@ module.exports = require("./cjs/react-dom.development.js");
         } finally{
             executionContext = prevExecutionContext; // If there were legacy sync updates, flush them at the end of the outer
             // most batchedUpdates-like method.
-            if (executionContext === NoContext && !ReactCurrentActQueue$1.isBatchingLegacy) {
+            if (executionContext === NoContext && // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.
+            !ReactCurrentActQueue$1.isBatchingLegacy) {
                 resetRenderTimer();
                 flushSyncCallbacksOnlyInLegacyMode();
             }
@@ -25301,7 +25358,7 @@ module.exports = require("./cjs/react-dom.development.js");
         new Set([
             nonExtensibleObject
         ]);
-    /* eslint-enable no-new */ } catch (e1) {
+    /* eslint-enable no-new */ } catch (e) {
         // TODO: Consider warning about bad polyfills
         hasBadMapPolyfill = true;
     }
@@ -26399,7 +26456,9 @@ module.exports = require("./cjs/react-dom.development.js");
     setAttemptHydrationAtCurrentPriority(attemptHydrationAtCurrentPriority$1);
     setGetCurrentUpdatePriority(getCurrentUpdatePriority);
     setAttemptHydrationAtPriority(runWithPriority);
-    if (typeof Map !== "function" || Map.prototype == null || typeof Map.prototype.forEach !== "function" || typeof Set !== "function" || Set.prototype == null || typeof Set.prototype.clear !== "function" || typeof Set.prototype.forEach !== "function") error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
+    if (typeof Map !== "function" || // $FlowIssue Flow incorrectly thinks Map has no prototype
+    Map.prototype == null || typeof Map.prototype.forEach !== "function" || typeof Set !== "function" || // $FlowIssue Flow incorrectly thinks Set has no prototype
+    Set.prototype == null || typeof Set.prototype.clear !== "function" || typeof Set.prototype.forEach !== "function") error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
     setRestoreImplementation(restoreControlledState$3);
     setBatchingImplementation(batchedUpdates$1, discreteUpdates, flushSync);
     function createPortal$1(children, container) {
@@ -26468,11 +26527,11 @@ module.exports = require("./cjs/react-dom.development.js");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"react":"21dqq","scheduler":"juvHo"}],"juvHo":[function(require,module,exports) {
+},{"e8d0f7f33559ca1e":"21dqq","91ce4558dbe58333":"juvHo"}],"juvHo":[function(require,module,exports) {
 "use strict";
-module.exports = require("./cjs/scheduler.development.js");
+module.exports = require("d7bae85bb2714ed3");
 
-},{"./cjs/scheduler.development.js":"RqdIf"}],"RqdIf":[function(require,module,exports) {
+},{"d7bae85bb2714ed3":"RqdIf"}],"RqdIf":[function(require,module,exports) {
 /**
  * @license React
  * scheduler.development.js
@@ -26926,7 +26985,7 @@ module.exports = require("./cjs/scheduler.development.js");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lJZlQ":[function() {},{}],"3AIvs":[function(require,module,exports) {
+},{}],"lJZlQ":[function() {},{}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -26956,19 +27015,32 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"laPgc":[function(require,module,exports) {
+},{}],"km3Ru":[function(require,module,exports) {
 "use strict";
-var Refresh = require("react-refresh/runtime");
+var Refresh = require("85d7fc61219d30fd");
 function debounce(func, delay) {
-    var args;
-    var timeout = undefined;
-    return function(args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(function() {
-            timeout = undefined;
-            func.call(null, args);
-        }, delay);
-    };
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
 }
 var enqueueUpdate = debounce(function() {
     Refresh.performReactRefresh();
@@ -27076,6 +27148,276 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"react-refresh/runtime":"3H7ms"}]},["byenu","ceL4K","d8Dch"], "d8Dch", "parcelRequiree257")
+},{"85d7fc61219d30fd":"786KC"}],"4gflv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f7a6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([
+        {
+            id: 1,
+            title: "Inception",
+            image: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
+            director: "Christopher Nolan",
+            genre: "Sci-Fi Action"
+        },
+        {
+            id: 2,
+            title: "The Shawshank Redemption",
+            image: "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+            director: "Frank Darabont",
+            genre: "Drama"
+        },
+        {
+            id: 3,
+            title: "Gladiator",
+            image: "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
+            director: "Ridley Scott",
+            genre: "Historical Drama"
+        }
+    ]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "Apologies, this list is emtpy."
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 32,
+        columnNumber: 12
+    }, undefined);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 37,
+        columnNumber: 7
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                    movie: movie,
+                    onMovieClick: (newSelectedMovie)=>{
+                        setSelectedMovie(newSelectedMovie);
+                    }
+                }, movie.id, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 48,
+                    columnNumber: 11
+                }, undefined))
+        }, void 0, false, {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 46,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false);
+};
+_s(MainView, "X5PbuZFTyVqYrO5JMFJvLMiGxU0=");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
+
+  $parcel$ReactRefreshHelpers$f7a6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = ({ movie , onMovieClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.title
+    }, void 0, false, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ggaUx":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e9f6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const MovieView = ({ movie , onBackClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: movie.image
+                }, void 0, false, {
+                    fileName: "src/components/movie-view/movie-view.jsx",
+                    lineNumber: 7,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Title: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 10,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.title
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 11,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Director: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 14,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.director
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 15,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 13,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Genre: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 18,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.genre
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 19,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 17,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: onBackClick,
+                children: "Back"
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 21,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true);
+};
+_c = MovieView;
+var _c;
+$RefreshReg$(_c, "MovieView");
+
+  $parcel$ReactRefreshHelpers$e9f6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8RM7s":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$39ec = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$39ec.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Greeting", ()=>Greeting);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class Greeting extends (0, _reactDefault.default).Component {
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "depp-flix",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: "Welcome to DeppFlix!"
+            }, void 0, false, {
+                fileName: "src/components/greeting/greeting.jsx",
+                lineNumber: 8,
+                columnNumber: 11
+            }, this)
+        }, void 0, false, {
+            fileName: "src/components/greeting/greeting.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, this);
+    }
+}
+
+  $parcel$ReactRefreshHelpers$39ec.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequiree257")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
