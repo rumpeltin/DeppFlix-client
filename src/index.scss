@@ -1,5 +1,20 @@
-$color: steelblue;
+// default styles
+$dark-c: #113f67;
+$light-c: #e7eaf6;
+$bg-c: #38598b;
+$dtls-c: #a2a8d3;
 
 .depp-flix {
-  color: $color;
+  color: $bg-c;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.button {
+  padding: 4px 12px 4px 12px;
+  color: $dtls-c;
+  border: none;
+  border-radius: 4px;
 }
