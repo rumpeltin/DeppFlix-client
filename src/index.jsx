@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { MainView } from './components/main-view/main-view';
 import { Greeting } from './components/greeting/greeting';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 

@@ -12,6 +12,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [user, setUser] = useState(storedUser? storedUser : null)
   const [token, setToken] = useState(storedToken? storedToken : null)
+  const [newUser, setNewUser] = useState(false)
 
   useEffect(() => {
 
@@ -42,7 +43,7 @@ export const MainView = () => {
         });
 
         setMovies(moviesFromApi);
-        
+
       });
   }, [token]);
 
@@ -58,9 +59,13 @@ export const MainView = () => {
         <br />
         <hr />
         <h2 className='depp-flix'>New here?</h2>
-        <SignupView />
+		    <SignupView />
       </>
     );
+  }
+  
+  if (newUser) {
+	  return <SignupView/>;
   }
 
   if (movies.length === 0) {
@@ -91,6 +96,7 @@ export const MainView = () => {
       </div>
       <br />
       <button 
+        className='button pointer'
         onClick={
           ()=>{
             setUser(null);

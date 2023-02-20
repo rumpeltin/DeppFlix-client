@@ -22,14 +22,15 @@ export const SignupView = () => {
       method: "POST",
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     }).then((response) => {
       if (response.ok) {
-        onLoggedIn(username);
+        alert("Sign-up successful! Please log in with your shiny new credentials.");
+        window.location.reload();
       } else {
-        alert("Sign-up failed");
+        alert("Sign-up failed.. Sorry :(");
       }
     });
   };
@@ -82,7 +83,10 @@ export const SignupView = () => {
           />
       </div>
       <br />
-      <button type="submit">Sign Up</button>
+      <button 
+        type="submit"
+        className="pointer"
+      >Sign Up</button>
     </form>
   );
 };
