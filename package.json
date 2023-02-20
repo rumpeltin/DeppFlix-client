@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rumpeltin/DeppFlix-client#readme",
   "dependencies": {
+    "date-fns": "^2.29.3",
     "parcel": "^2.8.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
