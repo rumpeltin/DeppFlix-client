@@ -65,7 +65,10 @@ export const LoginView = ({onLoggedIn}) => {
       />
       </Form.Group>
       <br />
-      <Button type="submit">Log In</Button>
+      <Button 
+        type="submit" 
+        className='btn btn-outline-light btn pointer'
+        >Log In</Button>
     </Form>
   );
 };
