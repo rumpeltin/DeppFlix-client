@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+// App Components
 import { LoginView } from '../login-view/login-view'
 import { SignupView } from '../signup-view/signup-view'
 import { MovieCard } from "../movie-card/movie-card"
@@ -12,13 +16,8 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [user, setUser] = useState(storedUser? storedUser : null)
   const [token, setToken] = useState(storedToken? storedToken : null)
-  const [newUser, setNewUser] = useState(false)
 
   useEffect(() => {
-
-    if (!token) {
-      return;
-    }
 
     fetch("https://depp-flix.onrender.com/movies", {
       headers: { 
@@ -47,64 +46,62 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <>  
-        <LoginView 
-          onLoggedIn={(user, token) => {
-            setUser(user)
-            setToken(token);
-          }}
-        /> 
-        <br />
-        <hr />
-        <h2 className='depp-flix'>New here?</h2>
-		    <SignupView />
-      </>
-    );
-  }
-  
-  if (newUser) {
-	  return <SignupView/>;
-  }
-
-  if (movies.length === 0) {
-    return <div>Apologies, this list is emtpy.</div>;
-  }
-
-  if (selectedMovie) {
-    return (
-      <MovieView 
-        movie={selectedMovie} 
-        onBackClick={() => setSelectedMovie(null)}
-      />
-    );
-  }
-
   return (
-    <>
-      <div>
-        {movies.map((movie) => (
-          <MovieCard  
-            key={movie.id} 
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
+    <Row  className="justify-content-md-center txt">
+      { !user ? (
+        <Row className="justify-content-between align-items-center">
+          <Col md={5}>
+            <h2 className="text-end">Login</h2>
+            <LoginView
+              className="align-self-start"
+              onLoggedIn={(user, token) => {
+                setUser(user)
+                setToken(token);
+              }}
+            />
+          </Col>
+          <Col md={5}>
+            <h2 className="text-end">New here?</h2>
+            <SignupView/>
+          </Col>
+        </Row>
+      ): selectedMovie ? (
+        <Col md={8}>
+          <MovieView 
+            movie={selectedMovie} 
+            onBackClick={() => setSelectedMovie(null)}
           />
-        ))}
-      </div>
-      <br />
-      <button 
-        className='button pointer'
-        onClick={
-          ()=>{
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }
-        }
-      >Logout</button>
-    </>
+        </Col>
+      ): movies.length === 0 ? (
+        <div>Apologies, this list is emtpy.</div>
+      ): (
+        <>
+          {movies.map((movie) => (
+            <Col key={movie.id} className="mb-5 txt" md={3}>
+              <MovieCard  
+                key={movie.id} 
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  setSelectedMovie(newSelectedMovie);
+                }}
+              />
+            </Col>
+          ))}
+          <br />
+          <Col md={2}>
+            <button 
+              className='btn btn-outline-light btn-lg pointer'
+              onClick={
+                ()=>{
+                  setUser(null);
+                  setToken(null);
+                  localStorage.clear();
+                }
+              }
+            >Logout</button>
+          </Col>
+        </>
+      )}
+    </Row>
   );
 }

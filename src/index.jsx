@@ -1,26 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Container from 'react-bootstrap/Container';
+
+// App Components
 import { MainView } from './components/main-view/main-view';
 import { Greeting } from './components/greeting/greeting';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
-// Import statement to indicate that you need to bundle `./index.scss`
+// Import statement — need to bundle `./index.scss`
 import './index.scss';
 
-// Main component (will eventually use all the others)
+// Main component
 class DeppFlixApplication extends React.Component {
   render() {
     return (
-      <>
+      <Container className="align-content-center">
         <Greeting/>
         <MainView/>
-      </>
+      </Container>
     );
   }
 }
 
-// Finds the root of your app
+// Finds the root
 const container = document.getElementsByClassName('app-container')[0];
 
 // Tells React to render your app in the root DOM element
