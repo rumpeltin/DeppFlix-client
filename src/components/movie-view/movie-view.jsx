@@ -1,7 +1,12 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 import './movie-view.scss'
 
-export const MovieView = ({movie, onBackClick}) => {
+export const MovieView = ({ movie }) => {
+  const { movieId } = useParams();
+  const movie = movies.find((m) => m.id === movieId);
+
   return (
     <>
       <h2>Overview</h2>
@@ -36,10 +41,11 @@ export const MovieView = ({movie, onBackClick}) => {
         <span className="value">{movie.genreDescription}</span>
       </div>
       <br/>
-      <button 
-        className='back-button pointer' 
-        onClick={onBackClick}
-        >Back</button>
+      <Link to={`/`}>
+        <button 
+          className='btn btn-outline-light pointer' 
+          >Back</button>
+      </Link>
     </>
   );
 };

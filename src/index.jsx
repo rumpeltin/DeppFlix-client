@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 
 // App Components
 import { MainView } from './components/main-view/main-view';
-import { Greeting } from './components/greeting/greeting';
 
 // Import statement — need to bundle `./index.scss`
 import './index.scss';
@@ -14,8 +13,7 @@ class DeppFlixApplication extends React.Component {
   render() {
     return (
       <Container className="align-content-center">
-        <Greeting/>
-        <MainView/>
+        <MainView />
       </Container>
     );
   }
