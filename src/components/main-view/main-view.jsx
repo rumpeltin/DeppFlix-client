@@ -1,18 +1,21 @@
 // React
 import React, { useState, useEffect } from 'react'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 // Custom Components
 import { LoginView } from '../login-view/login-view'
 import { SignupView } from '../signup-view/signup-view'
 import { MovieView } from '../movie-view/movie-view'
 import { MovieCard } from '../movie-card/movie-card'
+import { NaviBar } from '../navi-bar/navi-bar'
 
 // Routing
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 
 export const MainView = () => {
-  // const storedUser = JSON.parse(localStorage.getItem("user"));
-  // const storedToken = localStorage.getItem("token");
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
 
   const [movies, setMovies] = useState([])
   const [user, setUser] = useState(storedUser? storedUser : null)
@@ -23,7 +26,7 @@ export const MainView = () => {
     fetch("https://depp-flix.onrender.com/movies", {
       headers: { 
         Accept: 'application/json',
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     })
@@ -49,6 +52,14 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
+      <NaviBar 
+      user={user}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      />
       <Row>
         <Routes>
             <Route 
@@ -114,7 +125,10 @@ export const MainView = () => {
                   ) : movies.length === 0 ? (
                     <Col className="txt">Apologies, this list is emtpy.</Col>
                   ): (
-                    <Col md={8}>
+                    <Col 
+                      md={8} 
+                      style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}
+                    >
                       <MovieView movies={movies} />
                     </Col>
                   )}
@@ -128,7 +142,7 @@ export const MainView = () => {
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : movies.length === 0 ? (
-                    <Col>Apologies, this list is emtpy.</Col>
+                    <Col className="txt">Apologies, this list is emtpy.</Col>
                   ) : (
                     <>
                       {movies.map((movie) => (
@@ -136,18 +150,6 @@ export const MainView = () => {
                           <MovieCard movie={movie} />
                         </Col>
                       ))}
-                      <Col md={8}>
-                        <button 
-                          className='btn btn-outline-light btn-lg pointer'
-                          onClick={
-                            ()=>{
-                              setUser(null);
-                              setToken(null);
-                              localStorage.clear();
-                            }
-                          }
-                        >Logout</button>
-                      </Col>
                     </>
                   )}
                 </>
