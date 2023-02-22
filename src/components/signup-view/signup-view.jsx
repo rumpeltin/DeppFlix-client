@@ -1,6 +1,10 @@
+// React
 import { useState } from 'react'
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+
+// Routing
+import { Link } from 'react-router-dom'
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -86,9 +90,12 @@ export const SignupView = () => {
       </Form.Group>
       <br />
       <Button 
-        type="submit"
-        className="pointer"
+        type='submit'
+        className='btn btn-outline-light btn pointer me-3'
       >Sign Up</Button>
+      <Link to={`/`}>
+        <button className='btn btn-outline-light btn pointer'>Back</button>
+      </Link>
     </Form>
   );
 };

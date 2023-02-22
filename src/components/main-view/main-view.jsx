@@ -1,11 +1,5 @@
+// React
 import React, { useState, useEffect } from 'react'
-
-// Design
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-
-// Routing
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 // Custom Components
 import { LoginView } from '../login-view/login-view'
@@ -13,14 +7,16 @@ import { SignupView } from '../signup-view/signup-view'
 import { MovieView } from '../movie-view/movie-view'
 import { MovieCard } from '../movie-card/movie-card'
 
+// Routing
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
+
 export const MainView = () => {
   // const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
 
   const [movies, setMovies] = useState([])
-  // const [selectedMovie, setSelectedMovie] = useState(null)
-  const [user, setUser] = useState(null)
-  // const [token, setToken] = useState(storedToken? storedToken : null)
+  const [user, setUser] = useState(storedUser? storedUser : null)
+  const [token, setToken] = useState(storedToken? storedToken : null)
 
   useEffect(() => {
 
@@ -53,7 +49,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <Row className="justify-content-md-center">
+      <Row>
         <Routes>
             <Route 
               path="/signup"
@@ -62,8 +58,11 @@ export const MainView = () => {
                   {user ? (
                     <Navigate to="/" />
                   ): (
-                    <Col md={5}>
-                      <h2 className="text-end txt">New here?</h2>
+                    <Col 
+                      md={5}
+                      style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}
+                    >
+                      <h2 className="text-end txt">Glad to have you here!</h2>
                       <SignupView />
                     </Col>
                   )}
@@ -77,13 +76,31 @@ export const MainView = () => {
                   {user ? (
                     <Navigate to="/" />
                   ): (
-                    <Col md={5}>
-                      <h2 className="text-end txt">Login</h2>
-                      <LoginView
-                        className="align-self-start"
-                        onLoggedIn={(user) => setUser(user)}
-                      />
-                    </Col>
+                    <Row 
+                      className="justify-content-around" 
+                      style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}
+                    >
+                      <Col md={3} className="align-self-center">
+                        <h2 className="text-end txt">Login</h2>
+                        <LoginView
+                          className="align-self-start"
+                          onLoggedIn={(user, token) => {
+                            setUser(user)
+                            setToken(token);
+                          }}
+                        />
+                      </Col>
+                      <Col md={4}>
+                        <h2 className="text-end txt">New here?</h2>
+                        <p className="text-end txt">
+                          If you're looking for information on Johnny Depp and his movies, you've come to the right place. 
+                          Join us now!
+                        </p>
+                        <Link to={`/signup`}>
+                          <button className='btn btn-outline-light btn pointer m-2' style={{float:"right"}}>Sign Up</button>
+                        </Link>
+                      </Col>
+                    </Row>
                   )}
                 </>
               }
@@ -95,7 +112,7 @@ export const MainView = () => {
                   { !user ? (
                     <Navigate to="/login" replace />
                   ) : movies.length === 0 ? (
-                    <Col>Apologies, this list is emtpy.</Col>
+                    <Col className="txt">Apologies, this list is emtpy.</Col>
                   ): (
                     <Col md={8}>
                       <MovieView movies={movies} />

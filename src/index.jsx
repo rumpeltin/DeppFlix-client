@@ -12,8 +12,8 @@ import './index.scss';
 class DeppFlixApplication extends React.Component {
   render() {
     return (
-      <Container className="align-content-center">
-        <MainView />
+      <Container>
+        <MainView/>
       </Container>
     );
   }

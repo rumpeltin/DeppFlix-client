@@ -7,6 +7,10 @@ $light: #e7eaf6;
   background-color: $primary;
 }
 
+.hr {
+  border: 1px solid #a2a8d3;
+}
+
 .bg {
   background-color: $body-bg;
 }
@@ -19,26 +23,19 @@ $light: #e7eaf6;
   cursor: pointer;
 }
 
-.button {
-  padding: 4px 12px 4px 12px;
-  color: $primary;
-  border: none;
-  border-radius: 4px;
-}
-
 input.form-control,
 input.form-control:hover,
 input.form-control:active,
 input.txt.form-control,
 input.txt.form-control:hover,
 input.txt.form-control:active {
-  color: $light
+  color: $light;
 }
 
 html,
 body,
 .container {
-  height: 100vh
+  height: 100vh;
 }
 
 @import '~bootstrap/scss/bootstrap.scss';
