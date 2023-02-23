@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row'
 import { LoginView } from '../login-view/login-view'
 import { SignupView } from '../signup-view/signup-view'
 import { MovieView } from '../movie-view/movie-view'
+import { ProfileView } from '../profile-view/profile-view';
 import { MovieCard } from '../movie-card/movie-card'
 import { NaviBar } from '../navi-bar/navi-bar'
 
@@ -45,7 +46,7 @@ export const MainView = () => {
           }
         });
 
-        setMovies(moviesFromApi);
+      setMovies(moviesFromApi);
 
       });
   }, []);
@@ -151,6 +152,22 @@ export const MainView = () => {
                         </Col>
                       ))}
                     </>
+                  )}
+                </>
+              }
+            />
+             <Route
+              path='/users/:username'
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to='/login' replace />
+                  ) : movies.length === 0 ? (
+                    <Col className="txt">Apologies, this list is emtpy.</Col>
+                  ) : (
+                    <Col>
+                      <ProfileView movies={movies} />
+                    </Col>
                   )}
                 </>
               }

@@ -18,7 +18,7 @@ export const NaviBar = ({ user, token, onLoggedOut }) => {
                 <Nav.Link as={Link} to="/">
                   <span className="txt">Home</span>
                 </Nav.Link>
-                <Nav.Link as={Link} to="{`/users/${encodeURIComponent(user.id)}">
+                <Nav.Link as={Link} to="/users/${user.Username}">
                   <span className="txt">Profile</span>
                 </Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>
