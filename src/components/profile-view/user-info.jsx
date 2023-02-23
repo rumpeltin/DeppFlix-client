@@ -6,13 +6,11 @@ import Row from 'react-bootstrap/Row'
 // Routing
 import { Link } from 'react-router-dom'
 
-export const UserInfo = (user) => {
+export const UserInfo = ({user, token}) => {
 	const storedToken = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
 
-    const [token] = useState(storedToken? storedToken : null)
-
-	useEffect(() => {
+    useEffect(() => {
 
     fetch("https://depp-flix.onrender.com/users/:{$Username}", {
       method: "GET",
