@@ -5,12 +5,15 @@ import Form from 'react-bootstrap/Form'
 
 // Routing
 import { Link } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router';
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
+
+  const navigate = useNavigate();
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,13 +35,14 @@ export const SignupView = () => {
       },
       body: JSON.stringify(data)
     }).then((response) => {
-      if (response.ok) {
-        alert("Sign-up successful! Please log in with your shiny new credentials.");
-        window.location.reload();
-      } else {
-        alert("Sign-up failed.. Sorry :(");
-      }
-    });
+        if (response.ok) {
+          alert("Sign-up successful! Please log in with your shiny new credentials.");
+          window.location.reload();
+        } else {
+          alert("Sign-up failed.. Sorry :(");
+        }
+      });
+    navigate('/login');
   };
 
   return (

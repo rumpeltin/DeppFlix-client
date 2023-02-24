@@ -1,57 +1,35 @@
 // React
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 // Routing
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router'
 
-export const UserInfo = ({user, token}) => {
-	const storedToken = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
-
-    useEffect(() => {
-
-    fetch("https://depp-flix.onrender.com/users/:{$Username}", {
-      method: "GET",
-      headers: { 
-        Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const userFromApi = data.map((user) => {
-          return {
-          	id: user._id,
-          	username: user.Username,
-          	email: user.Email,
-          	password: user.Password,
-          	dob: user.DOB
-          }
-        });
-
-      setUser(userFromApi);
-
-      });
-  }, []);
+export const UserInfo = ({ user }) => {
+	
 
 	return (
-		<Row>
-			<Col>
-				<span className="txt">Username: </span>
-				<span className="txt">{user.username}</span>
+		<Row className="d-flex flex-column">
+			<Col className="my-2">
+				<span className="txt">Username</span><br />
+				<span className="txt">{user.Username}</span>
+				
 			</Col>
-			<Col>
-				<span className="txt">E-Mail: </span>
-				<span className="txt">{user.email}</span>
+			<Col className="my-2">
+				<span className="txt">Personal ID</span><br />
+				<span className="txt">{user._id}</span>
 			</Col>
-			<Col>
-				<span className="txt">Date of Birth: </span>
-				<span className="txt">{user.dob}</span>
+			<Col className="my-2">
+				<span className="txt">E-Mail</span><br />
+				<span className="txt">{user.Email}</span>
 			</Col>
-			<Col>
+			<Col className="my-2">
+				<span className="txt">Date of Birth</span><br />
+				<span className="txt">{user.DOB}</span>
+			</Col>
+			<Col className="my-2">
 				<Link to={`/`}>
 	        		<button className='btn btn-outline-light btn pointer'>Back</button>
 	      		</Link>

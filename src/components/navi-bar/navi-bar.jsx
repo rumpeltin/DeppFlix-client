@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { Greeting } from '../greeting/greeting'
 
-export const NaviBar = ({ user, token, onLoggedOut }) => {
+export const NaviBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar className="bg txt" expand="lg">
       <Container fluid>
@@ -18,7 +18,7 @@ export const NaviBar = ({ user, token, onLoggedOut }) => {
                 <Nav.Link as={Link} to="/">
                   <span className="txt">Home</span>
                 </Nav.Link>
-                <Nav.Link as={Link} to="/users/${user.Username}">
+                <Nav.Link as={Link} to={'/users/'+user.Username}>
                   <span className="txt">Profile</span>
                 </Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>

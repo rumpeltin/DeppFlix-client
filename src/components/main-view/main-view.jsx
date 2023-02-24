@@ -8,6 +8,7 @@ import { LoginView } from '../login-view/login-view'
 import { SignupView } from '../signup-view/signup-view'
 import { MovieView } from '../movie-view/movie-view'
 import { ProfileView } from '../profile-view/profile-view';
+import { UserInfo } from '../profile-view/user-info';
 import { MovieCard } from '../movie-card/movie-card'
 import { NaviBar } from '../navi-bar/navi-bar'
 
@@ -47,6 +48,7 @@ export const MainView = () => {
         });
 
       setMovies(moviesFromApi);
+      console.log(moviesFromApi);
 
       });
   }, []);
@@ -99,6 +101,7 @@ export const MainView = () => {
                           onLoggedIn={(user, token) => {
                             setUser(user)
                             setToken(token);
+                            console.log(user);
                           }}
                         />
                       </Col>
@@ -157,7 +160,7 @@ export const MainView = () => {
               }
             />
              <Route
-              path='/users/:username'
+              path="/users/:Username"
               element={
                 <>
                   {!user ? (
@@ -166,7 +169,7 @@ export const MainView = () => {
                     <Col className="txt">Apologies, this list is emtpy.</Col>
                   ) : (
                     <Col>
-                      <ProfileView movies={movies} />
+                      <ProfileView user={user}/>
                     </Col>
                   )}
                 </>

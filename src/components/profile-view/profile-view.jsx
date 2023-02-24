@@ -6,11 +6,13 @@ import Row from 'react-bootstrap/Row'
 // Custom Components
 import { UserInfo } from './user-info'
 
-export const ProfileView = ({user, token}) => {
+export const ProfileView = ({ user }) => {
 	const storedUser = JSON.parse(localStorage.getItem("user"));
-	const storedToken = localStorage.getItem("token");
+  	const storedToken = localStorage.getItem("token");
 
 	return (
-		<UserInfo user={storedUser} />
+		<>
+			<UserInfo user={storedUser} />
+		</>
 	);
 };
