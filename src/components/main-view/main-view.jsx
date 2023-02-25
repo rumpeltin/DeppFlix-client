@@ -128,7 +128,10 @@ export const MainView = () => {
                         { !user ? (
                             <Navigate to="/login" replace />
                         ) : movies.length === 0 ? (
-                            <Col className="txt">Apologies, this list is emtpy.</Col>
+                            <Col className="txt">
+                                Apologies, this list is emtpy. <br />
+                                Try refreshing the page.
+                            </Col>
                         ): (
                             <Col 
                                 md={8} 
@@ -151,7 +154,10 @@ export const MainView = () => {
                         {!user ? (
                             <Navigate to="/login" replace />
                         ) : movies.length === 0 ? (
-                            <Col className="txt">Apologies, this list is emtpy.</Col>
+                            <Col className="txt">
+                                Apologies, this list is emtpy. <br />
+                                Try refreshing the page.
+                            </Col>
                         ) : (
                             <>
                                 {movies.map((movie) => (
@@ -171,7 +177,10 @@ export const MainView = () => {
                             {!user ? (
                                 <Navigate to='/login' replace />
                             ) : movies.length === 0 ? (
-                                <Col className="txt">Apologies, this list is emtpy.</Col>
+                                <Col className="txt">
+                                    Apologies, this list is emtpy. <br />
+                                    Try refreshing the page.
+                                </Col>
                             ) : (
                                 <Col>
                                     <ProfileView 
