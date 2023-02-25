@@ -1,6 +1,6 @@
 # DeppFlix
 
-This is the client-side component of my DeppFlix application: a responsive app that was built with React.js <br/>
+This is the client-side component of my DeppFlix application built with React.js. <br/>
 It corresponds with my depp-flix API via user requests
 
 The current deployment was created with Netlify (https://depp-flix.netlify.app/), <br/>
