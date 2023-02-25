@@ -3,37 +3,31 @@ import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-// Routing
-import { Link } from 'react-router-dom'
-import { useParams } from 'react-router'
 
 export const UserInfo = ({ user }) => {
 	
-
 	return (
-		<Row className="d-flex flex-column">
-			<Col className="my-2">
-				<span className="txt">Username</span><br />
-				<span className="txt">{user.Username}</span>
-				
-			</Col>
-			<Col className="my-2">
-				<span className="txt">Personal ID</span><br />
-				<span className="txt">{user._id}</span>
-			</Col>
-			<Col className="my-2">
-				<span className="txt">E-Mail</span><br />
-				<span className="txt">{user.Email}</span>
-			</Col>
-			<Col className="my-2">
-				<span className="txt">Date of Birth</span><br />
-				<span className="txt">{user.DOB}</span>
-			</Col>
-			<Col className="my-2">
-				<Link to={`/`}>
-	        		<button className='btn btn-outline-light btn pointer'>Back</button>
-	      		</Link>
-	      	</Col>
-		</Row>
+		<>
+			<Row className="d-flex direction-column my-4 txt">
+				<h3 className="text-end"> Your Profile</h3>
+				<Col className="my-2">
+					<span>Username</span><br />
+					<span>{user.Username}</span>
+					
+				</Col>
+				<Col className="my-2">
+					<span>Personal ID</span><br />
+					<span>{user._id}</span>
+				</Col>
+				<Col className="my-2">
+					<span>E-Mail</span><br />
+					<span>{user.Email}</span>
+				</Col>
+				<Col className="my-2">
+					<span>Date of Birth</span><br />
+					<span>{user.DOB}</span>
+				</Col>
+			</Row>
+		</>
 	);
 };

@@ -9,6 +9,7 @@ $light: #e7eaf6;
 
 .hr {
   border: 1px solid #a2a8d3;
+  align-self: center;
 }
 
 .bg {
@@ -17,6 +18,10 @@ $light: #e7eaf6;
 
 .txt {
   color: $light;
+}
+
+.danger {
+  color: red;
 }
 
 .pointer {

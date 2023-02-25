@@ -6,15 +6,15 @@ import { Button, Card } from 'react-bootstrap'
 
 export const MovieCard = ({ movie }) => {
   return (
-  <Link to={`/movies/${encodeURIComponent(movie.id)}`}> 	
-    <Card className="h-100 txt">
-  	 <Card.Body className="bg">
-  	   <Card.Title>{movie.title}</Card.Title>
+    <Link to={`/movies/${encodeURIComponent(movie.id)}`}> 	
+      <Card className="h-100 txt">
+    	 <Card.Body className="bg">
+    	   <Card.Title>{movie.title}</Card.Title>
          <Card.Text>{movie.genre} by {movie.director}</Card.Text>
-  	   <Card.Text>{movie.description}</Card.Text>
-  	 </Card.Body>
-  	</Card>
-  </Link>
+    	   <Card.Text>{movie.description}</Card.Text>
+    	 </Card.Body>
+    	</Card>
+    </Link>
   );
 };
 
