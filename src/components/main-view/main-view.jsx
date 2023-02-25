@@ -167,8 +167,8 @@ export const MainView = () => {
                 path="/"
                 element={
                     <>
-                        <Row className="search-bar justify-content-end m-0 mt-3">
-                            <Col md={3} className="mb-3">
+                        <Row className="search-bar justify-content-end p-0">
+                            <Col md={2} className="mb-3 p-0">
                                 <Form>
                                     <Form.Control
                                         type="text"
