@@ -4,8 +4,8 @@ import { Button, Card } from "react-bootstrap";
 
 export const MovieCard = ({movie, onMovieClick}) => {
   return (
-	<Card onClick={() => onMovieClick(movie)}>
-	 <Card.Body>
+	<Card onClick={() => onMovieClick(movie)} className="h-100 txt">
+	 <Card.Body className="bg">
 	   <Card.Title>{movie.title}</Card.Title>
        <Card.Text>{movie.genre} by {movie.director}</Card.Text>
 	   <Card.Text>{movie.description}</Card.Text>

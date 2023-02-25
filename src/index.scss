@@ -1,11 +1,18 @@
-// default styles
-$dark-c: #113f67;
-$light-c: #e7eaf6;
-$bg-c: #38598b;
-$dtls-c: #a2a8d3;
+$primary: #38598b;
+$secondary: #a2a8d3;
+$body-bg: #113f67;
+$light: #e7eaf6;
 
 .depp-flix {
-  color: $bg-c;
+  background-color: $primary;
+}
+
+.bg {
+  background-color: $body-bg;
+}
+
+.txt {
+  color: $light;
 }
 
 .pointer {
@@ -14,7 +21,24 @@ $dtls-c: #a2a8d3;
 
 .button {
   padding: 4px 12px 4px 12px;
-  color: $dtls-c;
+  color: $primary;
   border: none;
   border-radius: 4px;
 }
+
+input.form-control,
+input.form-control:hover,
+input.form-control:active,
+input.txt.form-control,
+input.txt.form-control:hover,
+input.txt.form-control:active {
+  color: $light
+}
+
+html,
+body,
+.container {
+  height: 100vh
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
