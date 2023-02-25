@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Form from "react-bootstrap/Form";
 
 // Custom Components
 import { LoginView } from '../login-view/login-view'
@@ -23,6 +24,9 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null)
     const [token, setToken] = useState(storedToken? storedToken : null)
     const [favouriteMovies, setFavouriteMovies] = useState([]);
+
+    const [searchString, setSearchString] = useState("");
+    const [filteredMovies, setFilteredMovies] = useState([]);
 
     useEffect(() => {
 
@@ -53,6 +57,18 @@ export const MainView = () => {
 
         });
     }, []);
+
+    useEffect(() => {
+        if (searchString && searchString.length > 0) {
+            const searchedMoviesData = movies.filter(m => (
+                m.title.toLowerCase().includes(searchString.toLowerCase().trim())
+            ));
+            setFilteredMovies(searchedMoviesData);
+        } else {
+            setFilteredMovies([]);
+        }
+    }, [searchString])
+
 
     return (
         <BrowserRouter>
@@ -151,6 +167,19 @@ export const MainView = () => {
                 path="/"
                 element={
                     <>
+                        <Row className="search-bar justify-content-end m-0 mt-3">
+                            <Col md={3} className="mb-3">
+                                <Form>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Platoon"
+                                        value={searchString}
+                                        onChange={e => setSearchString(e.target.value)}
+                                        className="shadow-sm"
+                                    />
+                                </Form>
+                            </Col>
+                        </Row>
                         {!user ? (
                             <Navigate to="/login" replace />
                         ) : movies.length === 0 ? (
@@ -160,11 +189,19 @@ export const MainView = () => {
                             </Col>
                         ) : (
                             <>
-                                {movies.map((movie) => (
-                                    <Col className="mb-4" key={movie.id} md={3}>
-                                        <MovieCard movie={movie}/>
-                                    </Col>
-                                ))}
+                                {filteredMovies && filteredMovies.length > 0 ? (
+                                    filteredMovies.map((movie) =>
+                                        <Col className="mb-4" key={movie.id} md={3}>
+                                            <MovieCard movie={movie} user={user}/>
+                                        </Col>
+                                    )
+                                ) : (
+                                    movies.map((movie) => (
+                                        <Col className="mb-4" key={movie.id} md={3}>
+                                            <MovieCard movie={movie}/>
+                                        </Col>
+                                    ))
+                                )}
                             </>
                         )}
                     </>
