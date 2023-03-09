@@ -1,12 +1,19 @@
+// React
 import { useState } from 'react'
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+
+// Routing
+import { Link } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router';
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
+
+  const navigate = useNavigate();
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,13 +35,14 @@ export const SignupView = () => {
       },
       body: JSON.stringify(data)
     }).then((response) => {
-      if (response.ok) {
-        alert("Sign-up successful! Please log in with your shiny new credentials.");
-        window.location.reload();
-      } else {
-        alert("Sign-up failed.. Sorry :(");
-      }
-    });
+        if (response.ok) {
+          alert("Sign-up successful! Please log in with your shiny new credentials.");
+          window.location.reload();
+        } else {
+          alert("Sign-up failed.. Sorry :(");
+        }
+      });
+    navigate('/login');
   };
 
   return (
@@ -55,7 +63,7 @@ export const SignupView = () => {
         <Form.Label>Password:</Form.Label>
         <br />
         <Form.Control 
-          type="text" 
+          type="password" 
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -86,9 +94,12 @@ export const SignupView = () => {
       </Form.Group>
       <br />
       <Button 
-        type="submit"
-        className="pointer"
+        type='submit'
+        className='btn btn-outline-light btn pointer me-3'
       >Sign Up</Button>
+      <Link to={`/`}>
+        <button className='btn btn-outline-light btn pointer'>Back</button>
+      </Link>
     </Form>
   );
 };

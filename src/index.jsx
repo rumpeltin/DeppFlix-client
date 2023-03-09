@@ -1,10 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Container from 'react-bootstrap/Container';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Container from 'react-bootstrap/Container'
 
 // App Components
-import { MainView } from './components/main-view/main-view';
-import { Greeting } from './components/greeting/greeting';
+import { MainView } from './components/main-view/main-view'
 
 // Import statement — need to bundle `./index.scss`
 import './index.scss';
@@ -13,9 +12,8 @@ import './index.scss';
 class DeppFlixApplication extends React.Component {
   render() {
     return (
-      <Container className="align-content-center">
-        <Greeting/>
-        <MainView/>
+      <Container>
+        <MainView />
       </Container>
     );
   }

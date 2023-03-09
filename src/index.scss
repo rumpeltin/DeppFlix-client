@@ -7,6 +7,11 @@ $light: #e7eaf6;
   background-color: $primary;
 }
 
+.hr {
+  border: 1px solid #a2a8d3;
+  align-self: center;
+}
+
 .bg {
   background-color: $body-bg;
 }
@@ -15,15 +20,12 @@ $light: #e7eaf6;
   color: $light;
 }
 
-.pointer {
-  cursor: pointer;
+.danger {
+  color: red;
 }
 
-.button {
-  padding: 4px 12px 4px 12px;
-  color: $primary;
-  border: none;
-  border-radius: 4px;
+.pointer {
+  cursor: pointer;
 }
 
 input.form-control,
@@ -32,13 +34,7 @@ input.form-control:active,
 input.txt.form-control,
 input.txt.form-control:hover,
 input.txt.form-control:active {
-  color: $light
-}
-
-html,
-body,
-.container {
-  height: 100vh
+  color: $light;
 }
 
 @import '~bootstrap/scss/bootstrap.scss';
