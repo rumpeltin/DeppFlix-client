@@ -37,7 +37,7 @@ export const MovieView = ({ movies, user, token }) => {
 
     // ADD favourite movie
     const addFavouriteMovie = async() => {
-        const favouriteMovie = await fetch(REACT_APP_FAVMOV_URL, {
+        const favouriteMovie = await fetch(`https://depp-flix.onrender.com/users/${user.Username}/movies/${movie.id}`, {
             method: "POST",
             headers: { 
                 Accept: 'application/json',
@@ -59,7 +59,7 @@ export const MovieView = ({ movies, user, token }) => {
 
     // REMOVE favourite movie
     const deleteFavouriteMovie = async() => {
-        const favouriteMovie = await fetch (REACT_APP_FAVMOV_URL, {
+        const favouriteMovie = await fetch (`https://depp-flix.onrender.com/users/${user.Username}/movies/${movie.id}`, {
             method: "DELETE",
             headers: {
                 Accept: 'application/json',

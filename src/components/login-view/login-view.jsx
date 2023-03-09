@@ -14,7 +14,7 @@ export const LoginView = ({onLoggedIn}) => {
       Password: password
     }
 
-    fetch(REACT_APP_LOGIN_URL, {
+    fetch("https://depp-flix.onrender.com/login", {
       method: "POST",
       headers: {
         Accept: 'application/json',

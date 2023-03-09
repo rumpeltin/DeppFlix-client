@@ -7,8 +7,6 @@
     "process": false
   },
   "scripts": {
-    "start": "env-cmd -f .env.production react-scripts start",
-    "build:production": "env-cmd -f .env.production react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
