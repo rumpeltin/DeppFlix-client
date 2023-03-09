@@ -17,6 +17,7 @@ the server-side component is hosted on render (https://depp-flix.onrender.com).
 
     "Similar Movies" feature in `MovieView`
     Possible implementation of Redux
+    Replacing hardcoded URLs with env variables
 
 ## Current Issues
 
