@@ -27,7 +27,7 @@ export const SignupView = () => {
 
     console.log(data);
 
-    fetch("https://depp-flix.onrender.com/users", {
+    fetch(REACT_APP_SIGNUP_URL, {
       method: "POST",
       headers: {
         Accept: 'application/json',

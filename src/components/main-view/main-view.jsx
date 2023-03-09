@@ -30,7 +30,7 @@ export const MainView = () => {
 
     useEffect(() => {
 
-        fetch("https://depp-flix.onrender.com/movies", {
+        fetch(REACT_APP_MOVIES_URL, {
             headers: { 
                 Accept: 'application/json',
                 Authorization: `Bearer ${token}`,

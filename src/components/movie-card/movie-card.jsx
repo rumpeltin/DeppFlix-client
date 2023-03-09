@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 export const MovieCard = ({ movie }) => {
   return (

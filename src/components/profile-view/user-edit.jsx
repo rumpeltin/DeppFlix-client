@@ -28,7 +28,7 @@ export const UserEdit = ({ user, token }) => {
 
         console.log(data);
 
-        fetch(`https://depp-flix.onrender.com/users/${user.Username}`, {
+        fetch(REACT_APP_USER_URL, {
             method: "PUT",
             headers: {
                 Accept: 'application/json',

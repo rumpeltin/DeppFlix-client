@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row'
 export const UserDelete = ({ user, token }) => {
 
 	const handleDeregister = () => {
-        fetch(`https://depp-flix.onrender.com/users/${user.Username}`, {
+        fetch(REACT_APP_USER_URL, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
