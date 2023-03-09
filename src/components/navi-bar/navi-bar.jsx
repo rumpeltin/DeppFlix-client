@@ -10,8 +10,8 @@ export const NaviBar = ({ user, onLoggedOut }) => {
         <Navbar.Brand as={Link} to="/">
           <Greeting />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav txt" />
+        <Navbar.Collapse id="basic-navbar-nav txt">
           <Nav>
             {user && (
               <>
