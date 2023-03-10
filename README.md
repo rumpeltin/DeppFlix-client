@@ -21,4 +21,5 @@ the server-side component is hosted on render (https://depp-flix.onrender.com).
 
 ## Current Issues
 
+    User needs to manually reload to render content
     Some design bugs
